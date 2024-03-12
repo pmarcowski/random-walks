@@ -27,6 +27,7 @@ num_steps = 100 # number of steps for each agent
 random_starts = True # enable random starts
 start_range = 50 # area for randomizing start positions
 
+
 def random_walk(num_steps, max_step=1, random_starts=False, start_range=10):
     """
     Generates single 3D random walk.
@@ -40,7 +41,6 @@ def random_walk(num_steps, max_step=1, random_starts=False, start_range=10):
     Returns:
         NumPy array of shape (num_steps, 3) representing the (x, y, z) coordinates. 
     """
-
     if random_starts:
         start_pos = np.random.randint(-start_range, start_range + 1, size=3)
     else:
@@ -64,6 +64,7 @@ def update_trajectory(num, walks, lines):
         line.set_data(walk[:num, :2].T)
         line.set_3d_properties(walk[:num, 2])
     return lines
+
 
 # Generate random walk data
 walks = [random_walk(num_steps, random_starts=random_starts, start_range=start_range) for index in range(num_agents)]
